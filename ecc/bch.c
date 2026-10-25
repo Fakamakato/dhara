@@ -52,9 +52,8 @@ static bch_poly_t chunk_remainder(const struct bch_def *def,
 				  const uint8_t *chunk, size_t len)
 {
 	bch_poly_t remainder = 0;
-	int i;
 
-	for (i = 0; i < len; i++) {
+	for (unsigned int i = 0; i < len; i++) {
 		int j;
 
 		remainder ^= chunk[i] ^ 0xff;
@@ -160,9 +159,8 @@ static gf13_elem_t syndrome(const struct bch_def *bch,
 {
 	gf13_elem_t y = 0;
 	gf13_elem_t t = 1;
-	int i;
 
-	for (i = 0; i < len; i++) {
+	for (unsigned int i = 0; i < len; i++) {
 		uint8_t c = chunk[i] ^ 0xff;
 		int j;
 
@@ -175,7 +173,7 @@ static gf13_elem_t syndrome(const struct bch_def *bch,
 		}
 	}
 
-	for (i = 0; i < bch->degree; i++) {
+	for (int i = 0; i < bch->degree; i++) {
 		if (remainder & 1)
 			y ^= t;
 

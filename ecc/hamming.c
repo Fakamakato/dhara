@@ -60,7 +60,7 @@ static hamming_ecc_t parity_scan(const uint8_t *chunk, size_t len)
 	uint16_t line = 0;
 	uint16_t line_bar = 0;
 	hamming_ecc_t out = 0;
-	int i;
+	size_t i;
 
 	/* Let the bits in chunk be partitioned into the following
 	 * subsets:
@@ -153,7 +153,7 @@ hamming_ecc_t hamming_syndrome(const uint8_t *chunk, size_t len,
 
 int hamming_repair(uint8_t *chunk, size_t len, hamming_ecc_t syndrome)
 {
-	int pos = 0;
+	unsigned pos = 0;
 	int pos_bit = 1;
 	int i;
 
