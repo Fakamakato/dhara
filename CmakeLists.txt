@@ -1,0 +1,12 @@
+project(PrDharaNand LANGUAGES C)
+
+file(GLOB LIB_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/dhara/*.c" "${CMAKE_CURRENT_SOURCE_DIR}/ecc/*.c")
+
+add_library(DharaNand STATIC ${LIB_SOURCES})
+
+target_compile_options(DharaNand PRIVATE -Wno-type-limits)
+
+target_include_directories(DharaNand PUBLIC 
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+
